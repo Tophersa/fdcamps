@@ -1,0 +1,228 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+<link rel="stylesheet" href="{% static '/CSS/nav.css' %}">
+<link rel="stylesheet" href="{% static '/CSS/home.css' %}">
+
+
+
+<body class="w3-light-grey">
+
+<!-- w3-content defines a container for fixed size centered content, 
+and is wrapped around the whole page content, except for the footer in this example -->
+<div class="w3-content" style="max-width:1400px">
+
+<!-- Header -->
+<header class="w3-container w3-center w3-padding-32"> 
+  <h1><b>Future Development Camps</b></h1>
+  <div class="btn-group" role="group" aria-label="Basic example">
+    <button type="button" class="btn btn-primary grades" >Grade 8</button>
+    <button type="button" class="btn btn-primary grades">Grade 9</button>
+    <button type="button" class="btn btn-primary grades">Grade 10</button>
+    <button type="button" class="btn btn-primary grades">Grade 11</button>
+    <button type="button" class="btn btn-primary grades">Grade 12</button>
+  </div>
+</header>
+
+<!-- Grid -->
+<div class="w3-row">
+
+<!-- Blog entries -->
+<div class="w3-col l8 s12">
+  <!-- Blog entry -->
+  {% for motive in motivation %}
+  <div class="w3-card-4 w3-margin w3-white">
+    <img src="{{motive.imagelink}}" alt="speaker" class="speaker" style="width:100%">
+    <div class="w3-container">
+      <h3><b>{{motive.motiveType}}</b></h3>
+      <h5>{{motive.author}}<span class="w3-opacity">{{motive.lifetime}}</span></h5>
+    </div>
+
+    <div class="w3-container">
+      <p>
+        {{motive.quote}}
+      </p>
+    </div>
+  </div>
+  {% endfor %}
+  <hr>
+
+  <div class="w3-card w3-margin">
+    <div class="w3-container w3-padding">
+      <h4>Ads</h4>
+    </div>
+    <ul class="w3-ul w3-hoverable w3-white">
+      <li class="w3-padding-16">
+        <img src="/w3images/workshop.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+        <span class="w3-large">Lorem</span><br>
+        <span>Sed mattis nunc</span>
+      </li>
+      <li class="w3-padding-16">
+        <img src="/w3images/gondol.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+        <span class="w3-large">Ipsum</span><br>
+        <span>Praes tinci sed</span>
+      </li>   
+
+    </ul>
+  </div>
+  <!-- Ad here -->
+  <div class="w3-card-4 w3-margin w3-white">
+  <img src="/w3images/bridge.jpg" alt="ad" style="width:100%">
+    <div class="w3-container">
+      <h3><b>Ad</b></h3>
+      
+    </div>
+    <div class="w3-container">
+      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum, sapiente!</p>
+    </div>
+  </div>
+<!-- END BLOG ENTRIES -->
+<div class="container-fluid">
+
+<!-- subjects -->
+<div class="list-group">
+    <a href="#" class="btn btn-dark" aria-current="true">
+     <b>Past Papers</b> 
+    </a>
+</div>
+
+{% for sub in subjectList %}
+<a class="btn btn-primary m-2" data-bs-toggle="offcanvas" href="#{{ sub.subject }}" role="button" aria-controls="offcanvasExample">
+  {{ sub.subject }}
+</a>
+
+
+<div class="offcanvas offcanvas-start" tabindex="-1" id="{{ sub.subject }}" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">{{ sub.subject }}</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="dropdown mt-3">
+      <button class="btn btn-light btn-sm disabled justify-content-center" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
+        Amazing Resources
+      </button>
+      
+      {% for yr in yearList %}
+      {% if sub.subject == yr.retypeSubject %} 
+          <div class="list-group m-1">
+      
+      <button type="button" class="btn list-group-item list-group-item-action active" aria-current="true">
+        {{ yr.year}}
+      
+      </button>
+      {% for qp in qpList %}
+      {% if yr.year == qp.year and sub.subject == qp.retypeSubject %}
+      <a type="button btn-sm" href="{{qp.link}}" target="_blank" class="list-group-item list-group-item-action">{{qp.name}} <i class="far fa-file-pdf"></i></a>
+      {% endif %}
+      {% endfor %}
+      <!-- <button type="button btn-sm" class="list-group-item list-group-item-action">A third button item</button>
+      <button type="button btn-sm" class="list-group-item list-group-item-action">A fourth button item</button>
+      <button type="button btn-sm" class="list-group-item list-group-item-action">A fourth button item</button>
+      <button type="button btn-sm" class="list-group-item list-group-item-action">A fourth button item</button>
+      <button type="button btn-sm" class="list-group-item list-group-item-action">A fourth button item</button> -->
+    </div>
+    {% endif %}
+    {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% endfor %}
+
+
+
+</div>
+
+  <!-- Ad here -->
+  <div class="w3-card-4 w3-margin w3-white">
+    <img src="/w3images/bridge.jpg" alt="ad" style="width:100%">
+      <div class="w3-container">
+        <h3><b>Ad</b></h3>
+        
+      </div>
+      <div class="w3-container">
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum, sapiente!</p>
+      </div>
+    </div>
+</div>
+
+<!-- Introduction menu -->
+<div class="w3-col l4">
+  <!-- About Card -->
+  <div class="w3-card w3-margin w3-margin-top">
+  <img src="/w3images/avatar_g.jpg" style="width:100%">
+    <div class="w3-container w3-white">
+      <h4><b>Ad</b></h4>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, corporis?</p>
+    </div>
+  </div><hr>
+  
+  <!-- Posts -->
+  <div class="w3-card w3-margin">
+    <div class="w3-container w3-padding">
+      <h4>Ads</h4>
+    </div>
+    <ul class="w3-ul w3-hoverable w3-white">
+      <li class="w3-padding-16">
+        <img src="/w3images/workshop.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+        <span class="w3-large">Lorem</span><br>
+        <span>Sed mattis nunc</span>
+      </li>
+      <li class="w3-padding-16">
+        <img src="/w3images/gondol.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+        <span class="w3-large">Ipsum</span><br>
+        <span>Praes tinci sed</span>
+      </li> 
+      <li class="w3-padding-16">
+        <img src="/w3images/skies.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+        <span class="w3-large">Dorum</span><br>
+        <span>Ultricies congue</span>
+      </li>   
+      <li class="w3-padding-16 w3-hide-medium w3-hide-small">
+        <img src="/w3images/rock.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+        <span class="w3-large">Mingsum</span><br>
+        <span>Lorem ipsum dipsum</span>
+      </li>  
+    </ul>
+  </div>
+  <hr> 
+ 
+  <!-- Labels / tags -->
+  <div class="w3-card w3-margin">
+    <div class="w3-container w3-padding">
+      <h4>Ad</h4>
+    </div>
+    <div class="w3-container w3-white">
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maiores, pariatur.</p>
+    </div>
+  </div>
+  
+<!-- END Introduction Menu -->
+</div>
+
+<!-- END GRID -->
+</div><br>
+
+<!-- END w3-content -->
+</div>
+
+<!-- Footer -->
+<footer class="w3-container w3-navy-blue w3-padding-32 w3-margin-top">
+  <a href="https:pdcamps.com"><img src="{% static '/Images/camps-logo.png' %}" alt="pdcamps logo"></a>
+  <p>Brought to you by: <a href="https:pdcamps.com" target="_blank" class="footer-link">PD CAMPS</a></p>
+</footer>
+
+</body>
+</html>
