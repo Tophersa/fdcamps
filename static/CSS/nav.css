@@ -7,13 +7,10 @@
   padding-bottom: 20px;
   background-color: #2471a3;
   color: white;
-  /* border-style: solid; */
-  /* border-width: 0 0 20px 0; */
-  /* border-radius: 10px; */
   border-bottom-width: 3px;
   border-bottom-style: solid;
   border-bottom-color: #ffbf00;
-  /* border-color: red; */
+
 }
 
 .navbar-toggler {
@@ -52,6 +49,13 @@
   color: white;
 }
 
+.navbar-brand:hover {
+  color: white;
+  font-weight: bold;
+}
+
 span {
   font-style: italic;
 }
+
+

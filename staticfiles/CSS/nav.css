@@ -1,0 +1,57 @@
+.body {
+  font-family: "Roboto", sans-serif;
+}
+
+.navbar {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: #2471a3;
+  color: white;
+  /* border-style: solid; */
+  /* border-width: 0 0 20px 0; */
+  /* border-radius: 10px; */
+  border-bottom-width: 3px;
+  border-bottom-style: solid;
+  border-bottom-color: #ffbf00;
+  /* border-color: red; */
+}
+
+.navbar-toggler {
+  color: #2471a3;
+}
+
+.custom-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 191, 0)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.custom-toggler.navbar-toggler {
+  border-color: #2471a3;
+}
+
+.nav-link {
+  color: white;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  border-radius: 18px;
+  font-size: large;
+}
+
+.nav-link:hover {
+  color: white;
+  background-color: #48c9b0;
+  border-radius: 18px;
+}
+
+.nav-link:focus {
+  color: white;
+  background-color: #48c9b0;
+  border-radius: 18px;
+}
+
+.navbar-brand {
+  color: white;
+}
+
+span {
+  font-style: italic;
+}

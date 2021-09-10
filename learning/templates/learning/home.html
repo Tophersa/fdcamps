@@ -27,11 +27,11 @@ and is wrapped around the whole page content, except for the footer in this exam
 <header class="w3-container w3-center w3-padding-32"> 
   <h1><b>Future Development Camps</b></h1>
   <div class="btn-group" role="group" aria-label="Basic example">
-    <button type="button" class="btn btn-primary grades" >Grade 8</button>
-    <button type="button" class="btn btn-primary grades">Grade 9</button>
-    <button type="button" class="btn btn-primary grades">Grade 10</button>
-    <button type="button" class="btn btn-primary grades">Grade 11</button>
-    <button type="button" class="btn btn-primary grades">Grade 12</button>
+    <a type="button" class="btn btn-primary grades" href="#pastpaper-8">Grade 8</a>
+    <a type="button" class="btn btn-primary grades"href="#pastpaper-9">Grade 9</a>
+    <a type="button" class="btn btn-primary grades"href="#pastpaper-10">Grade 10</a>
+    <a type="button" class="btn btn-primary grades"href="#pastpaper-11">Grade 11</a>
+    <a type="button" class="btn btn-primary grades" href="#pastpaper-12" >Grade 12</a>
   </div>
 </header>
 
@@ -90,19 +90,21 @@ and is wrapped around the whole page content, except for the footer in this exam
 <!-- END BLOG ENTRIES -->
 <div class="container-fluid">
 
-<!-- subjects -->
+<!-- Grade Sction -->
+<!-- Header -->
 <div class="list-group">
-    <a href="#" class="btn btn-dark" aria-current="true">
-     <b>Past Papers</b> 
+    <a href="#" class="btn btn-dark m-2" id="pastpaper-12" aria-current="true">
+     <b>Grade 12 Past Papers</b> 
     </a>
 </div>
-
+<!-- subject button -->
 {% for sub in subjectList %}
+{% if sub.grade == "12" or sub.grade == "12" %}
 <a class="btn btn-primary m-2" data-bs-toggle="offcanvas" href="#{{ sub.subject }}" role="button" aria-controls="offcanvasExample">
   {{ sub.subject }}
 </a>
 
-
+<!-- canvas -->
 <div class="offcanvas offcanvas-start" tabindex="-1" id="{{ sub.subject }}" aria-labelledby="offcanvasExampleLabel">
   <div class="offcanvas-header">
     <h5 class="offcanvas-title" id="offcanvasExampleLabel">{{ sub.subject }}</h5>
@@ -113,52 +115,314 @@ and is wrapped around the whole page content, except for the footer in this exam
       <button class="btn btn-light btn-sm disabled justify-content-center" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
         Amazing Resources
       </button>
-      
       {% for yr in yearList %}
-      {% if sub.subject == yr.retypeSubject %} 
+        {% if sub.subject == yr.retypeSubject %} 
           <div class="list-group m-1">
-      
-      <button type="button" class="btn list-group-item list-group-item-action active" aria-current="true">
-        {{ yr.year}}
-      
-      </button>
-      {% for qp in qpList %}
-      {% if yr.year == qp.year and sub.subject == qp.retypeSubject %}
-      <a type="button btn-sm" href="{{qp.link}}" target="_blank" class="list-group-item list-group-item-action">{{qp.name}} <i class="far fa-file-pdf"></i></a>
-      {% endif %}
+            <!-- list head -->
+            <button type="button" class="btn list-group-item list-group-item-action active" aria-current="true">
+              {{ yr.year}}
+            </button>
+            <!-- list item -->
+            {% for qp in qpList %}
+              {% if yr.year == qp.year and sub.subject == qp.retypeSubject and qp.grade == sub.grade %}
+                <a type="button btn-sm" href="{{qp.link}}" target="_blank" class="list-group-item list-group-item-action">{{qp.name}} <i class="far fa-file-pdf"></i></a>
+              {% endif %}
+            {% endfor %}
+           </div>
+        {% endif %}
       {% endfor %}
-      <!-- <button type="button btn-sm" class="list-group-item list-group-item-action">A third button item</button>
-      <button type="button btn-sm" class="list-group-item list-group-item-action">A fourth button item</button>
-      <button type="button btn-sm" class="list-group-item list-group-item-action">A fourth button item</button>
-      <button type="button btn-sm" class="list-group-item list-group-item-action">A fourth button item</button>
-      <button type="button btn-sm" class="list-group-item list-group-item-action">A fourth button item</button> -->
-    </div>
-    {% endif %}
-    {% endfor %}
     </div>
   </div>
 </div>
-
+{% endif %}
 {% endfor %}
-
-
-
 </div>
 
+
   <!-- Ad here -->
-  <div class="w3-card-4 w3-margin w3-white">
-    <img src="/w3images/bridge.jpg" alt="ad" style="width:100%">
-      <div class="w3-container">
-        <h3><b>Ad</b></h3>
+<div class="w3-card-4 w3-margin w3-white">
+  <img src="/w3images/bridge.jpg" alt="ad" style="width:100%">
+    <div class="w3-container">
+      <h3><b>Ad</b></h3>
         
-      </div>
-      <div class="w3-container">
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum, sapiente!</p>
-      </div>
+    </div>
+    <div class="w3-container">
+      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum, sapiente!</p>
     </div>
 </div>
 
-<!-- Introduction menu -->
+  <!-- About Card -->
+<div class="w3-card w3-margin w3-margin-top">
+  <img src="/w3images/avatar_g.jpg" style="width:100%">
+  <div class="w3-container w3-white">
+    <h4><b>Ad</b></h4>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, corporis?</p>
+    </div>
+</div><hr>
+
+
+
+
+
+
+
+
+
+<!-- END BLOG ENTRIES -->
+<div class="container-fluid">
+
+  <!-- Grade Sction -->
+  <!-- Header -->
+  <div class="list-group">
+      <a href="#" class="btn btn-dark m-2" id="pastpaper-11" aria-current="true">
+       <b>Grade 11 Past Papers</b> 
+      </a>
+  </div>
+  <!-- subject button -->
+  {% for sub in subjectList %}
+  {% if sub.grade == "11" or sub.grade == "11" %}
+  <a class="btn btn-primary m-2" data-bs-toggle="offcanvas" href="#{{ sub.subject }}" role="button" aria-controls="offcanvasExample">
+    {{ sub.subject }}
+  </a>
+  
+  <!-- canvas -->
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="{{ sub.subject }}" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasExampleLabel">{{ sub.subject }}</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div class="dropdown mt-3">
+        <button class="btn btn-light btn-sm disabled justify-content-center" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
+          Amazing Resources
+        </button>
+        {% for yr in yearList %}
+          {% if sub.subject == yr.retypeSubject %} 
+            <div class="list-group m-1">
+              <!-- list head -->
+              <button type="button" class="btn list-group-item list-group-item-action active" aria-current="true">
+                {{ yr.year}}
+              </button>
+              <!-- list item -->
+              {% for qp in qpList %}
+                {% if yr.year == qp.year and sub.subject == qp.retypeSubject and qp.grade == sub.grade %}
+                  <a type="button btn-sm" href="{{qp.link}}" target="_blank" class="list-group-item list-group-item-action">{{qp.name}} <i class="far fa-file-pdf"></i></a>
+                {% endif %}
+              {% endfor %}
+             </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  {% endif %}
+  {% endfor %}
+  </div>
+
+
+
+
+
+<!-- END BLOG ENTRIES -->
+<div class="container-fluid">
+
+<!-- Grade Sction -->
+<!-- Header -->
+<div class="list-group">
+  <a href="#" class="btn btn-dark m-2" id="pastpaper-10" aria-current="true">
+   <b>Grade 10 Past Papers</b> 
+  </a>
+</div>
+<!-- subject button -->
+{% for sub in subjectList %}
+{% if sub.grade == "10" or sub.grade == "10" %}
+<a class="btn btn-primary m-2" data-bs-toggle="offcanvas" href="#{{ sub.subject }}" role="button" aria-controls="offcanvasExample">
+{{ sub.subject }}
+</a>
+
+<!-- canvas -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="{{ sub.subject }}" aria-labelledby="offcanvasExampleLabel">
+<div class="offcanvas-header">
+  <h5 class="offcanvas-title" id="offcanvasExampleLabel">{{ sub.subject }}</h5>
+  <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+</div>
+<div class="offcanvas-body">
+  <div class="dropdown mt-3">
+    <button class="btn btn-light btn-sm disabled justify-content-center" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
+      Amazing Resources
+    </button>
+    {% for yr in yearList %}
+      {% if sub.subject == yr.retypeSubject %} 
+        <div class="list-group m-1">
+          <!-- list head -->
+          <button type="button" class="btn list-group-item list-group-item-action active" aria-current="true">
+            {{ yr.year}}
+          </button>
+          <!-- list item -->
+          {% for qp in qpList %}
+            {% if yr.year == qp.year and sub.subject == qp.retypeSubject and qp.grade == sub.grade %}
+              <a type="button btn-sm" href="{{qp.link}}" target="_blank" class="list-group-item list-group-item-action">{{qp.name}} <i class="far fa-file-pdf"></i></a>
+            {% endif %}
+          {% endfor %}
+         </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+</div>
+{% endif %}
+{% endfor %}
+
+</div>
+
+<!-- Ad here -->
+<div class="w3-card-4 w3-margin w3-white">
+<img src="/w3images/bridge.jpg" alt="ad" style="width:100%">
+  <div class="w3-container">
+    <h3><b>Ad</b></h3>
+      
+  </div>
+  <div class="w3-container">
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum, sapiente!</p>
+  </div>
+</div>
+
+<!-- About Card -->
+<div class="w3-card w3-margin w3-margin-top">
+<img src="/w3images/avatar_g.jpg" style="width:100%">
+<div class="w3-container w3-white">
+  <h4><b>Ad</b></h4>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, corporis?</p>
+  </div>
+</div><hr>
+
+
+<!-- Grade Sction-->
+<div class="container-fluid">
+  <!-- Header -->
+  <div class="list-group">
+    <a href="#" class="btn btn-dark m-2" id="pastpaper-9" aria-current="true">
+     <b>Grade 9 Past Papers</b> 
+    </a>
+  </div>
+  <!-- subject button -->
+  {% for sub in subjectList %}
+  {% if sub.grade == "9" or sub.grade == "9" %}
+  <a class="btn btn-primary m-2" data-bs-toggle="offcanvas" href="#{{ sub.subject }}" role="button" aria-controls="offcanvasExample">
+  {{ sub.subject }}
+  </a>
+  
+  <!-- canvas -->
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="{{ sub.subject }}" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">{{ sub.subject }}</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="dropdown mt-3">
+      <button class="btn btn-light btn-sm disabled justify-content-center" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
+        Amazing Resources
+      </button>
+      {% for yr in yearList %}
+        {% if sub.subject == yr.retypeSubject %} 
+          <div class="list-group m-1">
+            <!-- list head -->
+            <button type="button" class="btn list-group-item list-group-item-action active" aria-current="true">
+              {{ yr.year}}
+            </button>
+            <!-- list item -->
+            {% for qp in qpList %}
+              {% if yr.year == qp.year and sub.subject == qp.retypeSubject and qp.grade == sub.grade %}
+                <a type="button btn-sm" href="{{qp.link}}" target="_blank" class="list-group-item list-group-item-action">{{qp.name}} <i class="far fa-file-pdf"></i></a>
+              {% endif %}
+            {% endfor %}
+           </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+  </div>
+  {% endif %}
+  {% endfor %}
+  </div> <!--end grade section-->
+
+    <!-- AD -->
+    <div class="w3-card w3-margin">
+      <div class="w3-container w3-padding">
+        <h4>Ads</h4>
+      </div>
+      <ul class="w3-ul w3-hoverable w3-white">
+        <li class="w3-padding-16">
+          <img src="/w3images/workshop.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+          <span class="w3-large">Lorem</span><br>
+          <span>Sed mattis nunc</span>
+        </li>
+        <li class="w3-padding-16">
+          <img src="/w3images/gondol.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+          <span class="w3-large">Ipsum</span><br>
+          <span>Praes tinci sed</span>
+        </li>   
+      </ul>
+    </div>
+
+
+
+<!-- Grade Sction-->
+<div class="container-fluid">
+  <!-- Header -->
+  <div class="list-group">
+    <a href="#" class="btn btn-dark m-2" id="pastpaper-8" aria-current="true">
+     <b>Grade 8 Past Papers</b> 
+    </a>
+  </div>
+  <!-- subject button -->
+  {% for sub in subjectList %}
+  {% if sub.grade == "8" or sub.grade == "8" %}
+  <a class="btn btn-primary m-2" data-bs-toggle="offcanvas" href="#{{ sub.subject }}" role="button" aria-controls="offcanvasExample">
+  {{ sub.subject }}
+  </a>
+  
+  <!-- canvas -->
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="{{ sub.subject }}" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">{{ sub.subject }}</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="dropdown mt-3">
+      <button class="btn btn-light btn-sm disabled justify-content-center" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
+        Amazing Resources
+      </button>
+      {% for yr in yearList %}
+        {% if sub.subject == yr.retypeSubject %} 
+          <div class="list-group m-1">
+            <!-- list head -->
+            <button type="button" class="btn list-group-item list-group-item-action active" aria-current="true">
+              {{ yr.year}}
+            </button>
+            <!-- list item -->
+            {% for qp in qpList %}
+              {% if yr.year == qp.year and sub.subject == qp.retypeSubject and qp.grade == sub.grade %}
+                <a type="button btn-sm" href="{{qp.link}}" target="_blank" class="list-group-item list-group-item-action">{{qp.name}} <i class="far fa-file-pdf"></i></a>
+              {% endif %}
+            {% endfor %}
+           </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+  </div>
+  {% endif %}
+  {% endfor %}
+  </div> <!--end grade section-->
+
+
+
+
+
+</div> <!--end left section-->
+
+<!-- right section -->
 <div class="w3-col l4">
   <!-- About Card -->
   <div class="w3-card w3-margin w3-margin-top">

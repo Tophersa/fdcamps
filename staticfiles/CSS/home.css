@@ -1,0 +1,23 @@
+body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+
+footer{
+    color: white;
+    background-color: #273746;
+    align-items: center;
+    text-align: center;
+    font-style: italic;
+}
+
+.grades:hover{
+    background-color: #FFBF00;
+    border: none;
+}
+
+.grades:focus{
+    background-color: #FFBF00;
+    outline: none;
+}
+.speaker{
+    height: 300px;
+    width: 100%;
+}
